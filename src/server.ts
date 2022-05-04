@@ -25,17 +25,22 @@ app.post("/feedbacks", async (req, res) => {
       screenshot,
     },
   });
-  return res.status(201).json({ data: feedback });
-});
 
-transport.sendMail({
+  await transport.sendMail({
     from: "Feedback Team <hello@feedback.com>",
     to: "Nuno Ferraz <108nunomiguelferraz@gmail.com>",
     subject: "New feedback",
     html: [
-        `<p></p>`,
-    ],
-})
+      `<div style="font-family: sans-serif; font-size: 16px; color; #111;">`,
+      `<h1>New feedback!</h1>`,
+      `<p>Type: ${type}</p>`,
+      `<p>Description: ${comment}</p>`,
+      `</div>`,
+    ].join("\n"),
+  });
+
+  return res.status(201).json({ data: feedback });
+});
 
 app.listen(3333, () => {
   console.log(" HTTP server running on port 3333!");
