@@ -35,7 +35,8 @@ routes.post("/feedbacks", async (req, res) => {
 routes.get("/allfeedbacks", async (req, res) => {
   try {
     const feedbacks = await prisma.feedback.findMany();
-    res.json(feedbacks);
+    //res.json(feedbacks);
+    return res.json(feedbacks);
   } catch (error) {
     console.log(error);
   }
