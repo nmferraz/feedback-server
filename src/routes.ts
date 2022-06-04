@@ -31,12 +31,3 @@ routes.post("/feedbacks", async (req, res) => {
     return res.status(500).send();
   }
 });
-
-{/*routes.get("/allfeedbacks", async (req, res) => {
-  try {
-    const feedbacks = await prisma.feedback.findMany();
-    return res.json(feedbacks);
-  } catch (error) {
-    console.log(error);
-  }
-});*/}
